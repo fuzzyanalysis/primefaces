@@ -111,6 +111,7 @@ public class DropdownView implements Serializable {
         	Calendar cal = 
         			(Calendar) FacesContext.getCurrentInstance().getApplication().createComponent(Calendar.COMPONENT_TYPE);
         	cal.setAlt("oh yeah");
+        	cal.setTitle("this is a dynamic title");
             this.panel.getChildren().add(cal);
     	}
     }

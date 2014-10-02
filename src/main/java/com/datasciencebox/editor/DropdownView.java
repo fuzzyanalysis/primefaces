@@ -3,11 +3,16 @@ package com.datasciencebox.editor;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.component.fileupload.FileUpload;
+import org.primefaces.component.outputpanel.OutputPanel;
+import org.primefaces.component.panel.Panel;
  
 @ManagedBean
 @ViewScoped
@@ -18,6 +23,7 @@ public class DropdownView implements Serializable {
     private String city;  
     private Map<String,String> countries;
     private Map<String,String> cities;
+    private OutputPanel panel;
      
     @PostConstruct
     public void init() {
@@ -88,5 +94,20 @@ public class DropdownView implements Serializable {
             msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
              
         FacesContext.getCurrentInstance().addMessage(null, msg);  
+        
+        FacesContext.getCurrentInstance().getApplication().createComponent(null, null);
+    }
+    
+    public OutputPanel getPanel(){
+    	return this.panel;
+    }
+    
+    public void setPanel(OutputPanel panel){
+    	this.panel = panel;
+    }
+    
+    public void createUI(){
+    	FileUpload fu = (FileUpload) FacesContext.getCurrentInstance().getApplication().createComponent(FileUpload.COMPONENT_TYPE);
+        panel.getChildren().add(fu);
     }
 }

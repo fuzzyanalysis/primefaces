@@ -190,6 +190,12 @@
 		</p:panel>
 	</h:form>
 
+	<h:form>
+		<p:outputPanel id="pnl" binding="#{dropdownView.panel}" />
+		<p:commandButton update="pnl"
+			actionListener="#{dropdownView.createUI}" />
+	</h:form>
+
 
 	<!--  Ajax Status Bar -->
 	<p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
@@ -261,27 +267,6 @@
 				<h:outputText value="Rating 3:" />
 				<h:outputText value="#{ratingView.rating3}" />
 			</h:panelGrid>
-		</p:dialog>
-	</h:form>
-
-	<!--  Map -->
-	<h:form>
-		<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID"
-			style="width:600px;height:400px" />
-	</h:form>
-
-	<!--  Mind Map -->
-	<h:form>
-		<p:mindmap value="#{mindMapView.root}"
-			style="width: 100%;height: 600px;border: 1px solid black;">
-			<p:ajax event="select" listener="#{mindMapView.onNodeSelect}" />
-			<p:ajax event="dblselect" listener="#{mindMapView.onNodeDblselect}"
-				update="output" oncomplete="PF('details').show();" />
-		</p:mindmap>
-
-		<p:dialog widgetVar="details" header="Node Details" resizable="false"
-			modal="true" showEffect="fade" hideEffect="fade">
-			<h:outputText id="output" value="#{mindMapView.selectedNode.data}" />
 		</p:dialog>
 	</h:form>
 

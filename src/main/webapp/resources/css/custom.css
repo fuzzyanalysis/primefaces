@@ -1,3 +1,17 @@
 h1{
 	color: green;
 }
+
+#form1 {
+	
+  border-radius: 20px;
+  padding: 30px 20px 20px 20px;
+  background-color: #ccf;  
+  box-shadow: 5px 5px 5px rgba(0,0,0,.75);
+  text-align: center;  
+
+  
+}
+
+
+

@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.calendar.Calendar;
 import org.primefaces.component.fileupload.FileUpload;
 import org.primefaces.component.outputpanel.OutputPanel;
 import org.primefaces.component.panel.Panel;
@@ -99,11 +100,19 @@ public class DropdownView implements Serializable {
     }
     
     public OutputPanel getPanel(){
+    	
     	return this.panel;
+    	
     }
     
     public void setPanel(OutputPanel panel){
     	this.panel = panel;
+    	if(panel != null){
+        	Calendar cal = 
+        			(Calendar) FacesContext.getCurrentInstance().getApplication().createComponent(Calendar.COMPONENT_TYPE);
+        	cal.setAlt("oh yeah");
+            this.panel.getChildren().add(cal);
+    	}
     }
     
     public void createUI(){

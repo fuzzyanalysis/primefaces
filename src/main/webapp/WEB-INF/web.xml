@@ -41,4 +41,11 @@
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
+  
+  <!-- Primefaces Themes -->
+  <context-param>  
+    <param-name>primefaces.THEME</param-name>  
+    <param-value>afterdark</param-value>  
+</context-param> 
+  
 </web-app>

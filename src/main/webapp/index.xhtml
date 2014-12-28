@@ -13,11 +13,21 @@
 </h:head>
 <h:body>
 
-<h:form>
-    <p:button value="Weather" href="http://www.datasciencebox.com:8088/primefaces/weather.xhtml" icon="ui-icon-info" />
-    <p:button value="Mobile Forms" href="http://www.datasciencebox.com:8088/primefaces/mobileforms.xhtml" icon="ui-icon-info" />
-    <p:button value="Javascript" href="http://www.datasciencebox.com:8088/primefaces/javascript.xhtml" icon="ui-icon-info" />
-</h:form>
+	<h:form>
+		<p:commandButton actionListener="#{buttonBean.getHost('weather.xhtml')}" value="test"></p:commandButton>
+	</h:form>
+	<h:form>
+
+		<p:button value="Weather"
+			href="/weather.xhtml"
+			icon="ui-icon-info" />
+		<p:button value="Mobile Forms"
+			href="/mobileforms.xhtml"
+			icon="ui-icon-info" />
+		<p:button value="Javascript"
+			href="/javascript.xhtml"
+			icon="ui-icon-info" />
+	</h:form>
 
 
 

@@ -7,17 +7,17 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<title>Basic GoJS Sample</title>
+	<script src="js/go.js"></script>
+	<link href="css/goSamples.css" rel="stylesheet" type="text/css"></link>
+	<!-- you don't need to use this -->
+	<script src="js/goSamples.js"></script>
+	<!-- this is only for the GoJS Samples framework -->
 
-	<h:outputStylesheet name="css/custom.css" />
-
-<script src="go.js"></script>
-<link href="css/goSamples.css" rel="stylesheet" type="text/css" />  <!-- you don't need to use this -->
-<script src="goSamples.js"></script>  <!-- this is only for the GoJS Samples framework -->
-	
-						<script>
+	<script id="code">
 
 					 function init() {
-						    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+						    //if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
 						    var $ = go.GraphObject.make;  // for conciseness in defining templates
 
 						    myDiagram =
@@ -255,7 +255,7 @@
 </script>
 
 </h:head>
-<h:body>
+<h:body onload="init()">
 
 
 
@@ -266,29 +266,51 @@
 		<h3>Orientation - Top|Bottom|Left|Right</h3>
 		<p:tabView orientation="left" dynamic="true" cache="true">
 			<p:ajax event="tabChange" listener="#{tabbedView.onTabChange}"
-				update=":form:msgs" />
+				update=":form:msgs" ></p:ajax>
 			<p:ajax event="tabClose" listener="#{tabbedView.onTabClose}"
-				update=":form:msgs" />
+				update=":form:msgs" ></p:ajax>
 
 			<p:tab title="1. Concept Details">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="Concept Details" />
+					<h:outputText value="Concept Details" ></h:outputText>
 				</h:panelGrid>
 			</p:tab>
 			<p:tab title="2. Admin Details">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="Admin Details" />
+					<h:outputText value="Admin Details" ></h:outputText>
 				</h:panelGrid>
 			</p:tab>
 			<p:tab title="3. Relationships">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="Relationships" />
-
-					<div id="myDiagram" style="border: solid 1px black; width:400px; height:400px"></div>
-
+					<h:outputText value="Relationships" ></h:outputText>
+										<h:form>
+						<div id="myDiagram"
+							style="border: solid 1px black; width: 400px; height: 400px"></div>
+					</h:form>
 				</h:panelGrid>
 			</p:tab>
 		</p:tabView>
+	</h:form>
+	
+<script>
+function test(){
+	alert('it worked');
+	remo();
+}
+</script>
+
+<div onclick="test()">...asd</div>
+
+	<h:form>
+	<p:remoteCommand name="remo" actionListener="#{buttonBean.listener()}" update="text"/>
+<h:outputText id="text" value="#{buttonBean.getText()}"/>
+<div onclick="remo()">...</div>
+</h:form>
+
+
+	<h:form>
+		<div id="myDiagram"
+			style="border: solid 1px black; width: 400px; height: 400px"></div>
 	</h:form>
 
 </h:body>

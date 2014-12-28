@@ -3,11 +3,16 @@ package com.datasciencebox.editor;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean
@@ -15,6 +20,25 @@ import javax.servlet.http.HttpServletRequest;
 public class ButtonBean implements Serializable {
 
 	public String host;
+	private String text = "Starting text";//getter + setter
+	
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String javascriptCall(){
+		return "haha";
+	}
+	
+	public void listener() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Calendar cal = Calendar.getInstance();
+	    text = "Text was changed via remote command on " + dateFormat.format(cal.getTime());
+	}
 	
 	public String getHost(String page) {
 		try {

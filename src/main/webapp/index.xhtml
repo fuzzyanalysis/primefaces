@@ -14,18 +14,15 @@
 <h:body>
 
 	<h:form>
-		<p:commandButton actionListener="#{buttonBean.getHost('weather.xhtml')}" value="test"></p:commandButton>
+		<p:commandButton
+			actionListener="#{buttonBean.getHost('weather.xhtml')}" value="test"></p:commandButton>
 	</h:form>
 	<h:form>
 
-		<p:button value="Weather"
-			href="/weather.xhtml"
+		<p:button value="Weather" href="/weather.xhtml" icon="ui-icon-info" />
+		<p:button value="Mobile Forms" href="/mobileforms.xhtml"
 			icon="ui-icon-info" />
-		<p:button value="Mobile Forms"
-			href="/mobileforms.xhtml"
-			icon="ui-icon-info" />
-		<p:button value="Javascript"
-			href="/javascript.xhtml"
+		<p:button value="Javascript" href="/javascript.xhtml"
 			icon="ui-icon-info" />
 	</h:form>
 

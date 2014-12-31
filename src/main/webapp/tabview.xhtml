@@ -8,6 +8,7 @@
 
 <h:head>
 	<title>Basic GoJS Sample</title>
+	<script src="js/jquery-2.1.3.js"></script>
 	<script src="js/go.js"></script>
 	<link href="css/goSamples.css" rel="stylesheet" type="text/css"></link>
 	<!-- you don't need to use this -->
@@ -56,16 +57,29 @@
 						                     function(e, obj) {  // the OBJ is this Button
 						                       var contextmenu = obj.part;  // the Button is in the context menu Adornment
 						                       var part = contextmenu.adornedPart;  // the adornedPart is the Part that the context menu adorns
+						                       var output = "";
 						                       // now can do something with PART, or with its data, or with the Adornment (the context menu)
-						                       if (part instanceof go.Link) alert(linkInfo(part.data));
-						                       else if (part instanceof go.Group) alert(groupInfo(contextmenu));
-						                       else alert(nodeInfo(part.data));
+						                       if (part instanceof go.Link){
+							                       output = linkInfo(part.data); 
+							                        textupdate(output); 
+							                        alert(output);
+						                       }
+						                       else if (part instanceof go.Group){
+							                       output = groupInfo(contextmenu);
+							                       textupdate(output);
+							                       alert(output);
+						                       }
+						                       else {
+							                       output = nodeInfo(part.data);
+							                       textupdate(output);
+							                       alert(output);
+						                       }
 						                     }),
 						          makeButton("Cut",
-						                     function(e, obj) { e.diagram.commandHandler.cutSelection(); },
+						                     function(e, obj) { e.diagram.commandHandler.cutSelection();},
 						                     function(o) { return o.diagram.commandHandler.canCutSelection(); }),
 						          makeButton("Copy",
-						                     function(e, obj) { e.diagram.commandHandler.copySelection(); },
+						                     function(e, obj) { e.diagram.commandHandler.copySelection(); alert(obj.part);},
 						                     function(o) { return o.diagram.commandHandler.canCopySelection(); }),
 						          makeButton("Paste",
 						                     function(e, obj) { e.diagram.commandHandler.pasteSelection(e.diagram.lastInput.documentPoint); },
@@ -254,6 +268,16 @@
 	
 </script>
 
+	<script>
+function textupdate(text){
+	
+	//normal javascript
+	//document.getElementById('mydiv').value = 'changed by test()';
+	//jquery
+	$("#myinput").val(text);
+}
+</script>
+
 </h:head>
 <h:body onload="init()">
 
@@ -266,24 +290,24 @@
 		<h3>Orientation - Top|Bottom|Left|Right</h3>
 		<p:tabView orientation="left" dynamic="true" cache="true">
 			<p:ajax event="tabChange" listener="#{tabbedView.onTabChange}"
-				update=":form:msgs" ></p:ajax>
+				update=":form:msgs"></p:ajax>
 			<p:ajax event="tabClose" listener="#{tabbedView.onTabClose}"
-				update=":form:msgs" ></p:ajax>
+				update=":form:msgs"></p:ajax>
 
 			<p:tab title="1. Concept Details">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="Concept Details" ></h:outputText>
+					<h:outputText value="Concept Details"></h:outputText>
 				</h:panelGrid>
 			</p:tab>
 			<p:tab title="2. Admin Details">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="Admin Details" ></h:outputText>
+					<h:outputText value="Admin Details"></h:outputText>
 				</h:panelGrid>
 			</p:tab>
 			<p:tab title="3. Relationships">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="Relationships" ></h:outputText>
-										<h:form>
+					<h:outputText value="Relationships"></h:outputText>
+					<h:form>
 						<div id="myDiagram"
 							style="border: solid 1px black; width: 400px; height: 400px"></div>
 					</h:form>
@@ -291,21 +315,25 @@
 			</p:tab>
 		</p:tabView>
 	</h:form>
-	
-<script>
+
+	<script>
 function test(){
 	alert('it worked');
-	remo();
+	remo();	
 }
 </script>
 
-<div onclick="test()">...asd</div>
+	<div id="mydiv" onclick="test()">
+		...asd <input id="myinput" type="text" value="unchanged"></input>
+	</div>
 
+	<!--  This is how you use p:remoteCommand to invoke a Bean from javascript -->
 	<h:form>
-	<p:remoteCommand name="remo" actionListener="#{buttonBean.listener()}" update="text"/>
-<h:outputText id="text" value="#{buttonBean.getText()}"/>
-<div onclick="remo()">...</div>
-</h:form>
+		<p:remoteCommand name="remo" actionListener="#{buttonBean.listener()}"
+			update="text" />
+		<h:outputText id="text" value="#{buttonBean.getText()}" />
+		<div onclick="remo()">...</div>
+	</h:form>
 
 
 	<h:form>

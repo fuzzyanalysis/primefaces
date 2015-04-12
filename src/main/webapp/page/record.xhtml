@@ -1,0 +1,41 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="record">
+
+		<p:panel>
+			<h:panelGrid columns="2" cellpadding="5">
+
+
+				<p:graphicImage id="pic" value="#{googleImagesBean.image}"
+					style="height: 200px;" />
+
+			</h:panelGrid>
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p>Details</p>
+				<p:growl id="growl" showDetail="true" sticky="true" />
+
+				<p>
+					<p:outputLabel for="datetime" value="Date and Time:" />
+					<p:calendar id="datetime" value="#{calendarView.date}"
+						label="#{calendarView.date}" pattern="MM/dd/yyyy HH:mm:ss" />
+				</p>
+
+				<!-- 			<ui:include src="../page/makeDropDown.xhtml" /> -->
+
+				<p>
+					<p:commandButton value="Save"
+						actionListener="#{growlView.saveMessage}" update="growl" />
+				</p>
+
+			</h:panelGrid>
+		</p:panel>
+
+	</h:form>
+
+</ui:composition>

@@ -1,0 +1,55 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+		<p:panel style="margin-bottom:10px;">
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel for="make" value="Make: " />
+				<p:selectOneMenu id="make" value="#{makeDropdownView.make}"
+					style="width:150px">
+					<p:ajax listener="#{makeDropdownView.onMakeChange}"
+						update="model,year,:record:pic,:wikipedia:content,:wikipedia:title,:details:logo" />
+					<f:selectItem itemLabel="Select Make" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{makeDropdownView.makes}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="model" value="Model: " />
+				<p:selectOneMenu id="model" value="#{makeDropdownView.model}"
+					style="width:150px">
+					<p:ajax listener="#{makeDropdownView.onModelChange}"
+						update="year,:record:pic, :wikipedia:content,:wikipedia:title" />
+					<f:selectItem itemLabel="Select Model" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{makeDropdownView.models}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="year" value="Year: " />
+				<p:selectOneMenu id="year" value="#{makeDropdownView.year}"
+					style="width:150px">
+					<p:ajax listener="#{makeDropdownView.onYearChange}"
+						update="model,:record:pic, :wikipedia:content,:wikipedia:title,:details:d1" />
+					<f:selectItem itemLabel="Select Year" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{makeDropdownView.years}" />
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+
+			<!-- 		<h:panelGrid> -->
+			<!-- 			<p> -->
+			<!-- 				<p:outputLabel id="wikipedia" value="#{wikipediaBean.html}"></p:outputLabel> -->
+			<!-- 			</p> -->
+			<!-- 		</h:panelGrid> -->
+
+
+		</p:panel>
+	</h:form>
+
+</ui:composition>

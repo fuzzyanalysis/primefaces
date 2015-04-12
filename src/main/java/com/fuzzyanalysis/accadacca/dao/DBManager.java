@@ -16,7 +16,7 @@ import com.fuzzyanalysis.accadacca.view.CarBean;
 
 public class DBManager {
 
-	public final String CAR_MAKES_QUERY_ALL = "SELECT MAKE FROM CARS";
+	public final String CAR_MAKES_QUERY_ALL = "SELECT MAKE FROM CARS"; //
 	public final String CAR_MAKES_QUERY = 
 			"SELECT MAKE FROM CARS WHERE MODEL LIKE '%%%s%%' AND YEAR LIKE '%%%s%%'";
 	public final String CAR_MODELS_QUERY = 

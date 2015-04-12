@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"ide":{},"plugins":{"angular":{},"dojotoolkit_1.6":{},"node":{}},"libs":["browser","ecma5","jquery"]}
+=======
+{"libs":["browser","ecma5"],"ide":{}}
+>>>>>>> branch 'master' of https://github.com/fuzzyanalysis/primefaces.git

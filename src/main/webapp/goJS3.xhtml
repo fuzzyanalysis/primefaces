@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Basic GoJS Parse Tree Sample</title>
+	<script src="js/go.js"></script>
+	<link href="css/goSamples.css" rel="stylesheet" type="text/css"></link>
+	<!-- you don't need to use this -->
+	<script src="js/goSamples.js"></script>
+	<!-- this is only for the GoJS Samples framework -->
+	<script>
+function init() {
+	
+	//getnodes();
+	//alert('finished getting node json.');
+    //if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+    myDiagram =
+      $(go.Diagram, "myDiagram",
+        {
+          allowCopy: false,
+          allowDelete: false,
+          allowMove: true,
+          initialContentAlignment: go.Spot.Center,
+          initialAutoScale: go.Diagram.Uniform,
+          layout:
+            $(FlatTreeLayout,  // custom Layout, defined below
+              { angle: 90,
+                compaction: go.TreeLayout.CompactionNone }),
+          "undoManager.isEnabled": true
+        });
+
+    myDiagram.nodeTemplate =
+      $(go.Node, "Vertical",
+        { selectionObjectName: "BODY" },
+        $(go.Panel, "Auto", { name: "BODY" },
+          $(go.Shape, "RoundedRectangle",
+            new go.Binding("fill"),
+            new go.Binding("stroke")),
+          $(go.TextBlock,
+            { font: "bold 12pt Arial", margin: new go.Margin(4, 2, 2, 2) },
+            new go.Binding("text"))
+        ),
+        $(go.Panel,  // this is underneath the "BODY"
+          { height: 15 },  // always this height, even if the TreeExpanderButton is not visible
+          $("TreeExpanderButton")
+        )
+      );
+
+    myDiagram.linkTemplate =
+      $(go.Link,
+        $(go.Shape, { strokeWidth: 1.5 }));
+
+    load();
+  }
+
+
+//   function load() {
+//       getnodes();
+// 	    myDiagram.model = go.Model.fromJson(document.getElementById("myForm:mySavedModel").value);
+
+//   }
+  
+
+  // Customize the TreeLayout to position all of the leaf nodes at the same vertical Y position.
+  function FlatTreeLayout() {
+    go.TreeLayout.call(this);  // call base constructor
+  }
+  go.Diagram.inherit(FlatTreeLayout, go.TreeLayout);
+
+  // This assumes the TreeLayout.angle is 90 -- growing downward
+  FlatTreeLayout.prototype.commitLayout = function() {
+    go.TreeLayout.prototype.commitLayout.call(this);  // call base method first
+    // find maximum Y position of all Nodes
+    var y = -Infinity;
+    this.network.vertexes.each(function(v) {
+        y = Math.max(y, v.node.position.y);
+      });
+    // move down all leaf nodes to that Y position, but keeping their X position
+    this.network.vertexes.each(function(v) {
+        var node = v.node;
+        if (node.isTreeLeaf) {
+          node.position = new go.Point(node.position.x, y);
+        }
+      });
+  };
+  // end FlatTreeLayout
+  
+</script>
+</h:head>
+
+<h:body onload="init()">
+
+	<p:layout>
+		<p:layoutUnit position="center">
+		
+		
+		
+		</p:layoutUnit>
+		<p:layoutUnit position="east">
+		</p:layoutUnit>
+	</p:layout>
+
+	<!-- 	<h:form> -->
+	<!-- 		<p:remoteCommand name="remo" actionListener="#{buttonBean.listener()}" -->
+	<!-- 			update="text" /> -->
+	<!-- 		<h:outputText id="text" value="#{buttonBean.getText()}" /> -->
+	<!-- 		<div onclick="remo()">...</div> -->
+	<!-- 	</h:form> -->
+
+	<h:form id="myForm">
+
+		<p:remoteCommand name="getnodes"
+			actionListener="#{buttonBean.getJSON()}" update=":myForm:mySavedModel" />
+		<h:inputText id="mySavedModel" value="#{buttonBean.metadata}"
+			style="border: solid 1px black; width: 100%; height: 100px" />
+		<button onclick="load();">JSON</button>
+
+		<br />
+
+
+		<div id="myDiagram"
+			style="border: solid 1px black; width: 100%; height: 500px"></div>
+
+		<h:inputText id="html" value="#{buttonBean.message}" />
+
+
+	</h:form>
+	
+			<script>
+
+	  function load() {
+
+		  var htmlstring = document.getElementById('myForm:html').value;
+		  alert(htmlstring);       
+		  getnodes();
+	      var nodes = document.getElementById('myForm:mySavedModel').value;
+	      //var nodes = "{#buttonBean.metadata}"	  
+	      var nodesString = new String(nodes);
+	      alert('nodesString = ' + nodesString);      
+	      var obj = JSON.parse(nodesString);   
+		  //nodes = new String(nodeString);	        
+		  myDiagram.model = go.Model.fromJson(obj);
+		  //myDiagram.model = go.Model.fromJson(nodes);
+	  }
+	</script>
+
+</h:body>
+</html>

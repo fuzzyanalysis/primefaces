@@ -73,8 +73,8 @@ public class ButtonBean implements Serializable {
 		this.text = text;
 	}
 
-	public String javascriptCall() {
-		return "haha";
+	public String javascriptCall(String one, String two) {
+		return "haha " + one + " " + two;
 	}
 	
 	public void listener() {

@@ -30,19 +30,19 @@
 				<!-- 						<div onclick="remo()">...</div> -->
 				<!-- 					</h:form> -->
 
+				<p:remoteCommand name="javascriptcall"
+					actionListener="#{buttonBean.javascriptCall()}"
+					update=":myDetails:nameText" />
 
-
-				<p:remoteCommand name="getnodes"
-					actionListener="#{buttonBean.getJSON()}"
-					update=":myForm:mySavedModel" />
+<!-- 				<p:remoteCommand name="getnodes" -->
+<!-- 					actionListener="#{buttonBean.getJSON()}" -->
+<!-- 					update=":myForm:mySavedModel" /> -->
 				<!-- 		<h:outputText id="text" value="#{buttonBean.getText()}" /> -->
 				<h:inputText id="mySavedModel" value="#{buttonBean.metadata}"
 					style="border: solid 1px black; width: 100%; height: 100px" />
 				<!-- 			<textarea id="myDiagram2" -->
 				<!-- 				style="border: solid 1px black; width: 100%; height: 500px"></textarea> -->
 				<button onclick="load();">Load</button>
-
-				<button onclick="load();">JSON</button>
 
 				<br />
 
@@ -58,20 +58,26 @@
 		<p:layoutUnit position="east" size="30%">
 
 			<h:form id="myDetails">
+<!-- 			<div id="nameText"></div> -->
 				<p>
-					<p:outputLabel for="name" value="Name:" />
-					<p:inputText id="name" />
+					<p:outputLabel for="nameText" value="Name:" />
+					<p:inputText id="nameText" />
 				</p>
 
 				<p>
-					<p:outputLabel for="description" value="Description:" />
-					<p:inputText id="description" />
+					<p:outputLabel for="descriptionText" value="Description:" />
+					<p:inputText id="descriptionText" />
 				</p>
 			</h:form>
 		</p:layoutUnit>
 	</p:layout>
 
 	<script>
+
+	  function showMessage(s) {
+		    document.getElementById('nameText').textContent = s;
+		    javascriptcall([{name: 'one', value: 'value1'}, {name: 'two', value: 'value2'}]);
+		  }
 
 			function init() {
 				
@@ -115,9 +121,16 @@
 			      $(go.Link,
 			        $(go.Shape, { strokeWidth: 1.5 }));
 
+				  myDiagram.addDiagramListener("ObjectSingleClicked",
+					      function(e) {
+					        var part = e.subject.part;
+					        if (!(part instanceof go.Link)) showMessage("Clicked on " + part.data.key);
+					      });
+			    
 			    load();
 			  } 
 
+			  
 			  // Customize the TreeLayout to position all of the leaf nodes at the same vertical Y position.
 			  function FlatTreeLayout() {
 			    go.TreeLayout.call(this);  // call base constructor

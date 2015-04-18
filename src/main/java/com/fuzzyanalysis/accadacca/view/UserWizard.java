@@ -1,12 +1,15 @@
-package com.datasciencebox.editor;
+package com.fuzzyanalysis.accadacca.view;
 
 import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.event.FlowEvent;
-import com.datasciencebox.editor.User;
+
+import com.fuzzyanalysis.accadacca.view.User;
  
 @ManagedBean
 @ViewScoped

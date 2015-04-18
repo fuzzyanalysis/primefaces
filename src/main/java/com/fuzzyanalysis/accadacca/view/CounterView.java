@@ -1,4 +1,4 @@
-package com.datasciencebox.editor;
+package com.fuzzyanalysis.accadacca.view;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;

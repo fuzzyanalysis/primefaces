@@ -1,0 +1,31 @@
+<ui:composition template="../layout/masterLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="north">
+		<ui:include src="../page/wikipedia.xhtml" />
+		<ui:include src="../layout/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<ui:include src="../page/record.xhtml" />
+	</ui:define>
+	<!-- 	</h:form> -->
+
+	<!-- 	<h:form> -->
+	<ui:define name="west">
+		<ui:include src="../page/makeDropDown.xhtml" />
+	</ui:define>
+	<!-- 	</h:form> -->
+
+	<!-- 	<h:form> -->
+	<ui:define name="east">
+		<ui:include src="../page/details.xhtml" />
+	Stats
+
+	</ui:define>
+
+</ui:composition>

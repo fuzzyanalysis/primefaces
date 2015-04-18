@@ -1,4 +1,4 @@
-package com.datasciencebox.editor;
+package com.fuzzyanalysis.editor.test;
 
 import org.junit.Assert;
 import org.junit.Test;

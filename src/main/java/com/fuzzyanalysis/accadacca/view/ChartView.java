@@ -1,4 +1,4 @@
-package com.datasciencebox.editor;
+package com.fuzzyanalysis.accadacca.view;
 
 import javax.annotation.PostConstruct;
 import java.io.Serializable;

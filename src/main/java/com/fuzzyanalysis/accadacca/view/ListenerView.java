@@ -1,9 +1,9 @@
-package com.datasciencebox.editor;
+package com.fuzzyanalysis.accadacca.view;
 
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class BasicView {
+public class ListenerView {
      
     private String text;
  
@@ -12,5 +12,9 @@ public class BasicView {
     }
     public void setText(String text) {
         this.text = text;
+    }
+     
+    public void handleKeyEvent() {
+        text = text.toUpperCase();
     }
 }

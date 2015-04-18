@@ -1,6 +1,5 @@
 package com.datasciencebox.editor;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,12 +12,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
-import org.primefaces.json.JSONException;
-import org.primefaces.json.JSONObject;
 
 @ManagedBean(name = "buttonBean")
 @ViewScoped

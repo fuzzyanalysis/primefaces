@@ -14,7 +14,7 @@
 				<p:selectOneMenu id="make" value="#{makeDropdownView.make}"
 					style="width:150px">
 					<p:ajax listener="#{makeDropdownView.onMakeChange}"
-						update="model,year,:record:pic,:wikipedia:content,:wikipedia:title,:details:logo" />
+						update="model,year,:details:pic,:wikipedia:content,:wikipedia:title,:wikipedia:logo" />
 					<f:selectItem itemLabel="Select Make" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{makeDropdownView.makes}" />
@@ -24,7 +24,7 @@
 				<p:selectOneMenu id="model" value="#{makeDropdownView.model}"
 					style="width:150px">
 					<p:ajax listener="#{makeDropdownView.onModelChange}"
-						update="year,:record:pic, :wikipedia:content,:wikipedia:title" />
+						update="year,:details:pic, :wikipedia:content,:wikipedia:title" />
 					<f:selectItem itemLabel="Select Model" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{makeDropdownView.models}" />
@@ -34,7 +34,18 @@
 				<p:selectOneMenu id="year" value="#{makeDropdownView.year}"
 					style="width:150px">
 					<p:ajax listener="#{makeDropdownView.onYearChange}"
-						update="model,:record:pic, :wikipedia:content,:wikipedia:title,:details:d1" />
+						update="model,:details:pic, :wikipedia:flag, :wikipedia:content,:wikipedia:title,
+						:details:d3, :details:d4 , :details:d5 , :details:d6 , :details:d7 ,
+						 :details:d8 , :details:d9 , :details:d10 , :details:d11 ,
+						  :details:d12 , :details:d13 , :details:d14 , :details:d15 ,
+						   :details:d16 , :details:d17 , :details:d18 , :details:d19 ,
+						    :details:d20 , :details:d21 , :details:d22 , :details:d23 ,
+						     :details:d24 , :details:d25 , :details:d26 , :details:d27 ,
+						      :details:d28 , :details:d29 , :details:d30 , :details:d31 ,
+						       :details:d32 , :details:d33 , :details:d34 , :details:d35 ,
+						        :details:d36 , :details:d37 , :details:d38 , :details:d39 ,
+						         :details:d40 , :details:d41 , :details:d42 , :details:d43 ,
+						          :details:d44 , :details:d45" />
 					<f:selectItem itemLabel="Select Year" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{makeDropdownView.years}" />

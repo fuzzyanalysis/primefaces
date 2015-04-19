@@ -3,6 +3,7 @@ package com.fuzzyanalysis.accadacca.dao;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class DBManager {
 			"SELECT YEAR FROM CARS WHERE MAKE LIKE '%%%s%%' AND MODEL LIKE '%%%s%%'";
 	
 	public final String CAR_DETAILS_QUERY = 
-			"SELECT car_aerodynamic_dragcoefisient FROM CARS WHERE MAKE LIKE '%%%s%%' AND MODEL LIKE '%%%s%%' AND YEAR LIKE '%%%s%%'";
+			"SELECT * FROM CARS WHERE MAKE LIKE '%%%s%%' AND MODEL LIKE '%%%s%%' AND YEAR LIKE '%%%s%%'";
 
 	static DBManager instance;
 	Connection connection = null;
@@ -89,8 +90,8 @@ public class DBManager {
 		return connection;
 	}
 
-	public String getCarDetails(String make, String model, String year){
-		String detail = null;
+	public TreeMap<String, String> getCarDetails(String make, String model, String year){
+		TreeMap<String, String> fields = new TreeMap<String, String>();
 		Connection connection = connect();
 		if (connection != null) {
 			System.out.println("Connected to database, ready for Years.");
@@ -102,14 +103,22 @@ public class DBManager {
 			Statement st = connection.createStatement();
 			String query = String.format(CAR_DETAILS_QUERY, make, model, year);
 			ResultSet rs = st.executeQuery(query);
-			while (rs.next()) {
-				detail = rs.getString(1);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int columnCount = rsmd.getColumnCount(); 
+			String fieldName = null;
+			String fieldValue = null;
+			while(rs.next()){ 
+				for(int i=1; i<columnCount; i++){
+					fieldName = rsmd.getColumnName(i);
+					fieldValue = rs.getString(i);
+					fields.put(fieldName, fieldValue);
+				}
 			}
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
-		return detail;
+		return fields;
 		
 	}
 	

@@ -5,18 +5,33 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<h:head>
+		<style>
+</style>
+	</h:head>
+
 	<h:form id="wikipedia">
 
-		<p:panel>
-			<h:panelGrid columns="2" cellpadding="5">
+		<table width="100%">
 
-				<p:outputLabel escape="false" id="title" style="size: large;"
-					value="#{wikipediaBean.title}"></p:outputLabel>
+			<tr>
+				<td><p:graphicImage id="logo" value="#{wikipediaBean.logo}"
+						style="height: 80px;" /></td>
 
-				<p><p:outputLabel escape="false" id="content"
-					value="#{wikipediaBean.html}"></p:outputLabel></p>
-			</h:panelGrid>
-		</p:panel>
+				<td>
+					<p>
+						<p:outputLabel escape="false" id="title" style="size: large;"
+							value="#{wikipediaBean.title}"></p:outputLabel>
+					</p> <p:outputLabel escape="false" id="content"
+						value="#{wikipediaBean.html}"></p:outputLabel>
+				</td>
+
+				<td align="right"><p:graphicImage id="flag"
+						value="#{wikipediaBean.flag}"
+						style="height: 80px; box-shadow: 10px 10px 5px #888;" /></td>
+			</tr>
+
+		</table>
 
 	</h:form>
 

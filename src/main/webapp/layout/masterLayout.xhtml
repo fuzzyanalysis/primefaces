@@ -6,35 +6,62 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>New Tech Website</title>
+	<title>Accadacca</title>
+	<style>
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.col {
+	top: 0;
+	bottom: 0;
+}
+
+.scroll-x {
+	overflow-x: auto;
+}
+
+.scroll-y {
+	overflow-y: auto;
+}
+</style>
 </h:head>
 
 <h:body>
 	<p:layout fullPage="true">
-		<p:layoutUnit header="Top" size="20%" position="north" resizable="true"
-			closable="false" collapsible="true">
-			<ui:include src="../page/header.xhtml" />
-			<ui:insert name="north"></ui:insert>			
+		<p:layoutUnit header="Top" size="20%" position="north"
+			resizable="true" closable="false" collapsible="true">
+			<!-- 			<ui:include src="../page/header.xhtml" /> -->
+			<ui:insert name="north"></ui:insert>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="south" size="100" header="Bottom"
-			resizable="true" closable="true" collapsible="true">
-			<h:outputText value="South unit content." />
-			<ui:include src="../page/footer.xhtml" />
-		</p:layoutUnit>
+<!-- 		<p:layoutUnit position="south" size="100" header="Bottom" -->
+<!-- 			resizable="true" closable="true" collapsible="true"> -->
+<!-- 			<h:outputText value="South unit content." /> -->
+<!-- 			<ui:include src="../page/footer.xhtml" /> -->
+<!-- 		</p:layoutUnit> -->
 
-		<p:layoutUnit position="west" size="30%" header="Left"
+		<p:layoutUnit position="west" header="Left"
 			resizable="true" closable="true" collapsible="true">
 			<ui:insert name="west"></ui:insert>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="east" size="30%" header="Right"
-			resizable="true" closable="true" collapsible="true">
 			<ui:insert name="east">Put east content here</ui:insert>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center">
+<!-- 		<p:layoutUnit position="east" size="30%" header="Right" -->
+<!-- 			resizable="true" closable="true" collapsible="true"> -->
+<!-- 			<ui:insert name="east">Put east content here</ui:insert> -->
+<!-- 		</p:layoutUnit> -->
+
+		<p:layoutUnit position="center" resizable="true"
+			collapsible="true">
+			<div style="overflow-y: auto;">
 			<ui:insert name="content">Put default content here, if any.</ui:insert>
+			</div>
 		</p:layoutUnit>
 	</p:layout>
 </h:body>

@@ -5,20 +5,206 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<h:head>
+		<style>
+		p .label-bold {
+			font-weight: bold;
+		}
+		</style>
+	</h:head>
+
 	<h:form id="details">
 
-<!-- 		<p:panel> -->
-<!-- 			<h:panelGrid columns="2" cellpadding="5"> -->
+		<p:scrollPanel mode="native" style="position: absolute; height: 100%; width: 100%; border: 10px;">
+
+			<p:graphicImage id="pic" value="#{googleImagesBean.image}"
+				height="200" />
 
 
-				<p:graphicImage id="logo" value="#{wikipediaBean.logo}"
-					style="height: 200px;" />
+			<p>
+				<p:outputLabel value="Color: " styleClass="label-bold"  />
+				<p:outputLabel id="d2" value="#{carBean.color}"></p:outputLabel>
+			</p>
 
-				<p:outputLabel value="Aerodynamic Drag Coefficient:" />
-				<p:outputLabel id="d1" value="#{carBean.aerodynamic_dragcoefisient}"></p:outputLabel>
+			<p>
+				<p:outputLabel value="Category: " styleClass="label-bold" />
+				<p:outputLabel id="d3" value="#{carBean.category}"></p:outputLabel>
+			</p>
 
-		<!-- 			</h:panelGrid> -->
-		<!-- 		</p:panel> -->
+			<p>
+				<p:outputLabel value="Engine Position: " styleClass="label-bold" />
+				<p:outputLabel id="d4" value="#{carBean.enginePosition}"></p:outputLabel>
+			</p>
+
+			<p>
+				<p:outputLabel value="Engine: " styleClass="label-bold" />
+				<p:outputLabel id="d5" value="#{carBean.engine}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Engine Type: " styleClass="label-bold" />
+				<p:outputLabel id="d6" value="#{carBean.engineType}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Valves per Cylinder: " styleClass="label-bold" />
+				<p:outputLabel id="d7" value="#{carBean.valvesPerCylinder}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Max Power: " styleClass="label-bold" />
+				<p:outputLabel id="d8" value="#{carBean.maxPower}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Max Torque : " styleClass="label-bold" />
+				<p:outputLabel id="d9" value="#{carBean.maxTorque}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Bore Stroke: " styleClass="label-bold" />
+				<p:outputLabel id="d10" value="#{carBean.boreStroke}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Compression: " styleClass="label-bold" />
+				<p:outputLabel id="d11" value="#{carBean.compression}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Top Speed: " styleClass="label-bold" />
+				<p:outputLabel id="d12" value="#{carBean.topSpeed}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Fuel : " styleClass="label-bold" />
+				<p:outputLabel id="d13" value="#{carBean.fuel}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Transmission : " styleClass="label-bold" />
+				<p:outputLabel id="d14" value="#{carBean.transmission}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Power Per Weight: " styleClass="label-bold" />
+				<p:outputLabel id="d15" value="#{carBean.powerPerWeight}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="0-100KmH, 0-62Mph: " styleClass="label-bold" />
+				<p:outputLabel id="d16" value="#{carBean.zeroTo100KmHZeroTo62Mph}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Drive  : " styleClass="label-bold" />
+				<p:outputLabel id="d17" value="#{carBean.drive}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Seats : " styleClass="label-bold" />
+				<p:outputLabel id="d18" value="#{carBean.seats}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Passenger Space : " styleClass="label-bold" />
+				<p:outputLabel id="d19" value="#{carBean.passengerSpace}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Doors : " styleClass="label-bold" />
+				<p:outputLabel id="d20" value="#{carBean.doors}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Country Of Origin: " styleClass="label-bold" />
+				<p:outputLabel id="d21" value="#{carBean.countryOfOrigin}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Front Tire: " styleClass="label-bold" />
+				<p:outputLabel id="d22" value="#{carBean.frontTire}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Rear Tire: " styleClass="label-bold" />
+				<p:outputLabel id="d23" value="#{carBean.rearTire}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Chassis: " styleClass="label-bold" />
+				<p:outputLabel id="d24" value="#{carBean.chassis}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="c02 Emissions: " styleClass="label-bold" />
+				<p:outputLabel id="d25" value="#{carBean.c02Emissions}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Turn Circle: " styleClass="label-bold" />
+				<p:outputLabel id="d26" value="#{carBean.turnCircle}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Weight : " styleClass="label-bold" />
+				<p:outputLabel id="d27" value="#{carBean.weight}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Towing Weight : " styleClass="label-bold" />
+				<p:outputLabel id="d28" value="#{carBean.towingWeight}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Total Length: " styleClass="label-bold" />
+				<p:outputLabel id="d29" value="#{carBean.totalLength}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Total Width: " styleClass="label-bold" />
+				<p:outputLabel id="d30" value="#{carBean.totalWidth}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Total Height: " styleClass="label-bold" />
+				<p:outputLabel id="d31" value="#{carBean.totalHeight}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Max Weight With Load: " styleClass="label-bold" />
+				<p:outputLabel id="d32" value="#{carBean.maxWeightWithLoad}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Ground Clearance: " styleClass="label-bold" />
+				<p:outputLabel id="d33" value="#{carBean.groundClearance}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Wheel Base: " styleClass="label-bold" />
+				<p:outputLabel id="d34" value="#{carBean.wheelbase}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Cooling: " styleClass="label-bold" />
+				<p:outputLabel id="d35" value="#{carBean.cooling}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Front Brakes Type: " styleClass="label-bold" />
+				<p:outputLabel id="d36" value="#{carBean.frontBrakesType}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Rear Brakes Type: " styleClass="label-bold" />
+				<p:outputLabel id="d37" value="#{carBean.rearBrakesType}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Cargo Space: " styleClass="label-bold" />
+				<p:outputLabel id="d38" value="#{carBean.cargoSpace}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Lubrication: " styleClass="label-bold" />
+				<p:outputLabel id="d39" value="#{carBean.lubrication}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Front Leg Room: " styleClass="label-bold" />
+				<p:outputLabel id="d40" value="#{carBean.front_leg_room}"></p:outputLabel>
+			</p>
+
+			<p>
+				<p:outputLabel value="Aerodynamic Drag Coefficient: " styleClass="label-bold" />
+				<p:outputLabel id="d41"
+					value="#{carBean.aerodynamic_dragcoefisient}"></p:outputLabel>
+			</p>
+
+			<p>
+				<p:outputLabel value="Fule with Highway Drive: " styleClass="label-bold" />
+				<p:outputLabel id="d42" value="#{carBean.fuel_with_highway_drive}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Fuel with Mixed Drive: " styleClass="label-bold" />
+				<p:outputLabel id="d43" value="#{carBean.fuel_with_mixed_drive}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Fuel with City Drive: " styleClass="label-bold" />
+				<p:outputLabel id="d44" value="#{carBean.fuel_with_city_drive}"></p:outputLabel>
+			</p>
+			<p>
+				<p:outputLabel value="Fuel Tank Capacity: " styleClass="label-bold" />
+				<p:outputLabel id="d45" value="#{carBean.fuel_tank_capacity}"></p:outputLabel>
+			</p>
+
+		</p:scrollPanel>
 
 	</h:form>
 

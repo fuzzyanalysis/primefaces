@@ -6,12 +6,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="north">
+<!-- 		<ui:include src="../layout/menu.xhtml" /> -->
 		<ui:include src="../page/wikipedia.xhtml" />
-		<ui:include src="../layout/menu.xhtml" />
 	</ui:define>
-	
+
 	<ui:define name="content">
-		<ui:include src="../page/record.xhtml" />
+		<ui:include src="../page/details.xhtml" />
 	</ui:define>
 	<!-- 	</h:form> -->
 
@@ -23,9 +23,7 @@
 
 	<!-- 	<h:form> -->
 	<ui:define name="east">
-		<ui:include src="../page/details.xhtml" />
-	Stats
-
+		<ui:include src="../page/record.xhtml" />	
 	</ui:define>
 
 </ui:composition>

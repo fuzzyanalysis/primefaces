@@ -137,7 +137,8 @@ public class MakeDropdownView implements Serializable {
 			googleImagesBean.setImage(
 					googleImagesBean.getImage(searchTerm));
 			wikipediaBean.setTitle(searchTerm);
-			wikipediaBean.setLogo(wikipediaBean.getLogo(make));
+			wikipediaBean.setLogo(googleImagesBean.getImage(make + " company logo"));			
+			
 		} else {
 			//models = new HashMap<String, String>();
 		}		
@@ -151,7 +152,7 @@ public class MakeDropdownView implements Serializable {
 			googleImagesBean.setImage(
 					googleImagesBean.getImage(searchTerm));
 			wikipediaBean.setTitle(searchTerm);
-			wikipediaBean.setLogo(searchTerm);
+			//wikipediaBean.setLogo(wikipediaBean.getLogo(make));
 		} else {
 			//years = new HashMap<String, String>();
 		}
@@ -165,8 +166,10 @@ public class MakeDropdownView implements Serializable {
 			googleImagesBean.setImage(
 					googleImagesBean.getImage(searchTerm));
 			wikipediaBean.setTitle(searchTerm);			
-			String detail = dbmanager.getCarDetails(make, model, year);
-			carBean.setAerodynamic_dragcoefisient(detail);
+			this.details = dbmanager.getCarDetails(make, model, year);
+			carBean.setAll(this.details);
+			wikipediaBean.setFlag(googleImagesBean.getImage(carBean.getCountryOfOrigin() + " flag"));
+
 		}
 		 
 	}

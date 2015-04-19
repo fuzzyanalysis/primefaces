@@ -1,5 +1,7 @@
 package com.fuzzyanalysis.accadacca.view;
 
+import java.util.Map;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -7,7 +9,57 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CarBean {
 
-
+	public final String ID = "id";
+	public final String MAKE = "make";
+	public final String MODEL = "model";
+	public final String YEAR = "year";
+	public final String COLOR = "";
+	public final String CATEGORY = "car_category";
+	public final String ENGINEPOSITION = "car_engine_position";
+	public final String ENGINE = "car_engine";
+	public final String ENGINETYPE = "car_engine_type";
+	public final String VALVESPERCYLINDER = "car_valves_per_cylinder";
+	public final String MAXPOWER = "car_max_power";
+	public final String MAXTORQUE = "car_max_torque";
+	public final String BORESTROKE = "car_bore_stroke";
+	public final String COMPRESSION = "car_compression";
+	public final String TOPSPEED = "car_top_speed";
+	public final String FUEL = "car_fuel";
+	public final String TRANSMISSION = "car_transmission";
+	public final String POWERPERWEIGHT = "car_power_per_weight";
+	public final String ZEROTO100KMHZEROTO62MPH = "car_0_100_km_h_0_62_mph";
+	public final String DRIVE = "car_drive";
+	public final String SEATS = "car_seats";
+	public final String PASSENGERSPACE = "car_passenger_space";
+	public final String DOORS = "car_doors";
+	public final String COUNTRYOFORIGIN = "car_country_of_origin";
+	public final String FRONTTIRE = "car_front_tire";
+	public final String REARTIRE = "car_rear_tire";
+	public final String CHASSIS = "car_chassis";
+	public final String C02EMISSIONS = "car_c02_emissions";
+	public final String TURNCIRCLE = "car_turn_circle";
+	public final String WEIGHT = "car_weight";
+	public final String TOWINGWEIGHT = "car_towing_weight";
+	public final String TOTALLENGTH = "car_total_length";
+	public final String TOTALWIDTH = "car_total_width";
+	public final String TOTALHEIGHT = "car_total_height";
+	public final String MAXWEIGHTWITHLOAD = "car_max_weight_with_load";
+	public final String GROUNDCLEARANCE = "car_ground_clearance";
+	public final String WHEELBASE = "car_wheel_base";
+	public final String COOLING = "car_cooling";
+	public final String FRONTBRAKESTYPE = "car_front_brakes_type";
+	public final String REARBRAKESTYPE = "car_rear_brakes_type";
+	public final String CARGOSPACE = "car_cargo_space";
+	public final String LUBRICATION = "car_lubrication";
+	public final String FRONT_LEG_ROOM = "car_front_leg_room";
+	public final String AERODYNAMIC_DRAGCOEFISIENT = "car_aerodynamic_dragcoefisient";
+	public final String FUEL_WITH_HIGHWAY_DRIVE = "car_fuel_with_highway_drive";
+	public final String FUEL_WITH_MIXED_DRIVE = "car_fuel_with_mixed_drive";
+	public final String FUEL_WITH_CITY_DRIVE = "car_fuel_with_city_drive";
+	public final String FUEL_TANK_CAPACITY = "car_fuel_tank_capacity";
+	public final String CREATED_BY = "created_by";
+	public final String CREATED_ON = "created_on";
+	
 	public String id;
 	public String make;
 	public String model;
@@ -19,26 +71,26 @@ public class CarBean {
 	public String engineType;
 	public String valvesPerCylinder;
 	public String maxPower;
-	public String maxTorqueCharacter;
+	public String maxTorque;
 	public String boreStroke;
 	public String compression;
 	public String topSpeed;
-	public String fuelCharacter;
-	public String transmissionCharacter;
+	public String fuel;
+	public String transmission;
 	public String powerPerWeight;
 	public String zeroTo100KmHZeroTo62Mph;
-	public String driveCharacterVarying;
-	public String seatsCharacter;
-	public String passengerSpaceCharacter;
-	public String doorsCharacter;
+	public String drive;
+	public String seats;
+	public String passengerSpace;
+	public String doors;
 	public String countryOfOrigin;
 	public String frontTire;
 	public String rearTire;
 	public String chassis;
 	public String c02Emissions;
 	public String turnCircle;
-	public String weightCharacter;
-	public String towingWeightCharacter;
+	public String weight;
+	public String towingWeight;
 	public String totalLength;
 	public String totalWidth;
 	public String totalHeight;
@@ -148,12 +200,12 @@ public class CarBean {
 		this.maxPower = maxPower;
 	}
 
-	public String getMaxTorqueCharacter() {
-		return maxTorqueCharacter;
+	public String getMaxTorque() {
+		return maxTorque;
 	}
 
-	public void setMaxTorqueCharacter(String maxTorqueCharacter) {
-		this.maxTorqueCharacter = maxTorqueCharacter;
+	public void setMaxTorque(String maxTorque) {
+		this.maxTorque = maxTorque;
 	}
 
 	public String getBoreStroke() {
@@ -180,20 +232,20 @@ public class CarBean {
 		this.topSpeed = topSpeed;
 	}
 
-	public String getFuelCharacter() {
-		return fuelCharacter;
+	public String getFuel() {
+		return fuel;
 	}
 
-	public void setFuelCharacter(String fuelCharacter) {
-		this.fuelCharacter = fuelCharacter;
+	public void setFuel(String fuel) {
+		this.fuel = fuel;
 	}
 
-	public String getTransmissionCharacter() {
-		return transmissionCharacter;
+	public String getTransmission() {
+		return transmission;
 	}
 
-	public void setTransmissionCharacter(String transmissionCharacter) {
-		this.transmissionCharacter = transmissionCharacter;
+	public void setTransmission(String transmission) {
+		this.transmission = transmission;
 	}
 
 	public String getPowerPerWeight() {
@@ -212,36 +264,36 @@ public class CarBean {
 		this.zeroTo100KmHZeroTo62Mph = zeroTo100KmHZeroTo62Mph;
 	}
 
-	public String getDriveCharacterVarying() {
-		return driveCharacterVarying;
+	public String getDrive() {
+		return drive;
 	}
 
-	public void setDriveCharacterVarying(String driveCharacterVarying) {
-		this.driveCharacterVarying = driveCharacterVarying;
+	public void setDrive(String drive) {
+		this.drive = drive;
 	}
 
-	public String getSeatsCharacter() {
-		return seatsCharacter;
+	public String getSeats() {
+		return seats;
 	}
 
-	public void setSeatsCharacter(String seatsCharacter) {
-		this.seatsCharacter = seatsCharacter;
+	public void setSeats(String seats) {
+		this.seats = seats;
 	}
 
-	public String getPassengerSpaceCharacter() {
-		return passengerSpaceCharacter;
+	public String getPassengerSpace() {
+		return passengerSpace;
 	}
 
-	public void setPassengerSpaceCharacter(String passengerSpaceCharacter) {
-		this.passengerSpaceCharacter = passengerSpaceCharacter;
+	public void setPassengerSpace(String passengerSpace) {
+		this.passengerSpace = passengerSpace;
 	}
 
-	public String getDoorsCharacter() {
-		return doorsCharacter;
+	public String getDoors() {
+		return doors;
 	}
 
-	public void setDoorsCharacter(String doorsCharacter) {
-		this.doorsCharacter = doorsCharacter;
+	public void setDoors(String doors) {
+		this.doors = doors;
 	}
 
 	public String getCountryOfOrigin() {
@@ -292,20 +344,20 @@ public class CarBean {
 		this.turnCircle = turnCircle;
 	}
 
-	public String getWeightCharacter() {
-		return weightCharacter;
+	public String getWeight() {
+		return weight;
 	}
 
-	public void setWeightCharacter(String weightCharacter) {
-		this.weightCharacter = weightCharacter;
+	public void setWeight(String weight) {
+		this.weight = weight;
 	}
 
-	public String getTowingWeightCharacter() {
-		return towingWeightCharacter;
+	public String getTowingWeight() {
+		return towingWeight;
 	}
 
-	public void setTowingWeightCharacter(String towingWeightCharacter) {
-		this.towingWeightCharacter = towingWeightCharacter;
+	public void setTowingWeight(String towingWeight) {
+		this.towingWeight = towingWeight;
 	}
 
 	public String getTotalLength() {
@@ -458,6 +510,60 @@ public class CarBean {
 
 	public void setCreated_on(String created_on) {
 		this.created_on = created_on;
+	}
+
+	public void setAll(Map<String, String> details) {
+		
+//		for(Map.Entry<String,String> entry : details.entrySet()) {
+//			  String key = entry.getKey();
+//			  String value = entry.getValue();
+//
+//			  System.out.println(key + " => " + value);
+//			}
+		
+		setAerodynamic_dragcoefisient(details.get(AERODYNAMIC_DRAGCOEFISIENT));
+		setBoreStroke(details.get(BORESTROKE));
+		setC02Emissions(details.get(C02EMISSIONS));
+		setCargoSpace(details.get(CARGOSPACE));
+		setCategory(details.get(CATEGORY));
+		setColor(details.get(COLOR));
+		setCompression(details.get(COMPRESSION));
+		setCooling(details.get(COOLING));
+		setCountryOfOrigin(details.get(COUNTRYOFORIGIN));
+		setDoors(details.get(DOORS));
+		setDrive(details.get(DRIVE));		
+		setEngine(details.get(ENGINE));
+		setEnginePosition(details.get(ENGINEPOSITION));
+		setEngineType(details.get(ENGINETYPE));
+		setFront_leg_room(details.get(FRONT_LEG_ROOM));
+		setFrontBrakesType(details.get(FRONTBRAKESTYPE));
+		setFrontTire(details.get(FRONTTIRE));
+		setFuel_tank_capacity(details.get(FUEL_TANK_CAPACITY));
+		setFuel_with_city_drive(details.get(FUEL_WITH_CITY_DRIVE));
+		setFuel_with_highway_drive(details.get(FUEL_WITH_HIGHWAY_DRIVE));
+		setFuel_with_mixed_drive(details.get(FUEL_WITH_MIXED_DRIVE));
+		setFuel(details.get(FUEL));
+		setGroundClearance(details.get(GROUNDCLEARANCE));
+		setId(details.get(ID));
+		setLubrication(details.get(LUBRICATION));
+		setMake(details.get(MAKE));
+		setMaxPower(details.get(MAXPOWER));
+		setMaxTorque(details.get(MAXTORQUE));
+		setMaxWeightWithLoad(details.get(MAXWEIGHTWITHLOAD));
+		setModel(details.get(MODEL));
+		setPassengerSpace(details.get(PASSENGERSPACE));
+		setPowerPerWeight(details.get(POWERPERWEIGHT));
+		setRearBrakesType(details.get(REARBRAKESTYPE));
+		setRearTire(details.get(REARTIRE));
+		setSeats(details.get(SEATS));
+		setTopSpeed(details.get(TOPSPEED));
+		setTotalHeight(details.get(TOTALHEIGHT));
+		setTotalLength(details.get(TOTALLENGTH));
+		setTotalWidth(details.get(TOTALWIDTH));
+		setTowingWeight(details.get(TOWINGWEIGHT));
+		setTransmission(details.get(TRANSMISSION));
+		setTurnCircle(details.get(TURNCIRCLE));
+		
 	}
 
 	

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 import org.primefaces.json.JSONObject;
 
 import com.jayway.jsonpath.JsonPath;
@@ -18,15 +19,26 @@ import com.jayway.jsonpath.JsonPath;
 @ViewScoped
 public class WikipediaBean {
 
-	public final String WIKIPEDIA_URL = 
-			"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=";
-	
-	public final String WIKIPEDIA_LOGO_FRAGMENT = 
-			"&prop=pageimages&format=json&pithumbsize=100";
-	
+	public final String WIKIPEDIA_URL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=";
+
+	public final String WIKIPEDIA_LOGO_FRAGMENT = "&prop=pageimages&format=json&pithumbsize=100";
+
 	public String title;
 	public String html;
 	public String logo;
+	public String flag;
+
+	public String getFlag(String search) {
+		return getImage(search + " flag");
+	}
+
+	public String getFlag() {
+		return this.flag;
+	}
+	
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 
 	public String getLogo() {
 		return logo;
@@ -43,7 +55,7 @@ public class WikipediaBean {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getHtml() {
 		if (this.title != null) {
 			return getHtml(this.title);
@@ -54,7 +66,11 @@ public class WikipediaBean {
 	}
 
 	public String getLogo(String search){
-		
+		return getImage(search);
+	}
+	
+	private String getImage(String search) {
+
 		StringBuffer sb = new StringBuffer();
 		search = search.replace(" ", "_");
 		URL url;
@@ -83,16 +99,23 @@ public class WikipediaBean {
 			}
 		}
 		JSONObject obj;
-		String val;
-		List<String> contents = JsonPath.read(sb.toString(),  "$..source");
-//			obj = new JSONObject(sb.toString());
-//			val = (String) obj.getJSONObject("query").getJSONObject("pages").getJSONObject("13673345").get("extract");
-		val = contents.get(0).toString();
-		this.logo = val;
+		String val = "No Logo Found";
+
+		try {
+			List<String> contents = JsonPath.read(sb.toString(), "$..source");
+			// obj = new JSONObject(sb.toString());
+			// val = (String)
+			// obj.getJSONObject("query").getJSONObject("pages").getJSONObject("13673345").get("extract");
+			val = contents.get(0).toString();
+			this.logo = val;
+		} catch (Exception ex) {
+			//ex.printStackTrace();
+		}
+
 		return val;
-		
+
 	}
-	
+
 	public String getHtml(String search) {
 
 		StringBuffer sb = new StringBuffer();
@@ -123,14 +146,21 @@ public class WikipediaBean {
 			}
 		}
 		JSONObject obj;
-		String val;
-		List<String> contents = JsonPath.read(sb.toString(),  "$..extract");
-//			obj = new JSONObject(sb.toString());
-//			val = (String) obj.getJSONObject("query").getJSONObject("pages").getJSONObject("13673345").get("extract");
-		val = contents.toString().substring(0, 400) + " ...";
-		this.html = val;
-		return val;
+		String val = "(No information found on Wikipedia.)";
 		
+		try {
+			List<String> contents = JsonPath.read(sb.toString(), "$..extract");
+			// obj = new JSONObject(sb.toString());
+			// val = (String)
+			// obj.getJSONObject("query").getJSONObject("pages").getJSONObject("13673345").get("extract");
+			val = contents.toString().substring(0, 400) + " ...";
+			this.html = val;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		return val;
+
 	}
 
 }

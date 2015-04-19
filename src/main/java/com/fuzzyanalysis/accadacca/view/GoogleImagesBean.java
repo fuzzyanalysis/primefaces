@@ -44,7 +44,7 @@ public class GoogleImagesBean {
 
 	public String getImage(String search) {
 
-		String imageUrl = null;
+		String imageUrl = "";
         try{
         	search = search.replace(" ", "%20");
             URL url = new URL("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + search);
@@ -63,8 +63,8 @@ public class GoogleImagesBean {
             //BufferedImage image = ImageIO.read(new URL(imageUrl));
             //JOptionPane.showMessageDialog(null, "", "", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(image));
         } catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Failure", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, e.getMessage(), "Failure", JOptionPane.ERROR_MESSAGE);
+            //e.printStackTrace();
         }
 		return imageUrl;
 	}

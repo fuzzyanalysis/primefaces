@@ -12,65 +12,6 @@
 	<link href="css/goSamples.css" rel="stylesheet" type="text/css"></link>
 	<!-- you don't need to use this -->
 	<script src="js/goSamples.js"></script>
-	<!-- this is only for the GoJS Samples framework -->
-
-</h:head>
-
-<h:body onload="init()">
-
-	<p:layout>
-		<p:layoutUnit position="center">
-
-			<h:form id="myForm">
-
-				<!-- 					<h:form> -->
-				<!-- 						<p:remoteCommand name="remo" actionListener="#{buttonBean.listener()}" -->
-				<!-- 							update="text" /> -->
-				<!-- 						<h:outputText id="text" value="#{buttonBean.getText()}" /> -->
-				<!-- 						<div onclick="remo()">...</div> -->
-				<!-- 					</h:form> -->
-
-				<p:remoteCommand name="javascriptcall"
-					actionListener="#{buttonBean.javascriptCall()}"
-					update=":myDetails:nameText" />
-
-<!-- 				<p:remoteCommand name="getnodes" -->
-<!-- 					actionListener="#{buttonBean.getJSON()}" -->
-<!-- 					update=":myForm:mySavedModel" /> -->
-				<!-- 		<h:outputText id="text" value="#{buttonBean.getText()}" /> -->
-				<h:inputText id="mySavedModel" value="#{buttonBean.metadata}"
-					style="border: solid 1px black; width: 100%; height: 100px" />
-				<!-- 			<textarea id="myDiagram2" -->
-				<!-- 				style="border: solid 1px black; width: 100%; height: 500px"></textarea> -->
-				<button onclick="load();">Load</button>
-
-				<br />
-
-
-				<div id="myDiagram"
-					style="border: solid 1px black; width: 100%; height: 500px"></div>
-
-				<h:inputText id="html" value="#{buttonBean.message}" />
-
-			</h:form>
-
-		</p:layoutUnit>
-		<p:layoutUnit position="east" size="30%">
-
-			<h:form id="myDetails">
-<!-- 			<div id="nameText"></div> -->
-				<p>
-					<p:outputLabel for="nameText" value="Name:" />
-					<p:inputText id="nameText" />
-				</p>
-
-				<p>
-					<p:outputLabel for="descriptionText" value="Description:" />
-					<p:inputText id="descriptionText" />
-				</p>
-			</h:form>
-		</p:layoutUnit>
-	</p:layout>
 
 	<script>
 
@@ -79,11 +20,11 @@
 		    javascriptcall([{name: 'one', value: 'value1'}, {name: 'two', value: 'value2'}]);
 		  }
 
-			function init() {
+		function init() {
 				
-				//getnodes();
-				//alert('finished getting node json.');
-			    //if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+		//getnodes();
+		//alert('finished getting node json.');
+		//if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
 			    var $ = go.GraphObject.make;  // for conciseness in defining templates
 			    myDiagram =
 			      $(go.Diagram, "myDiagram",
@@ -155,23 +96,71 @@
 			  };
 			  // end FlatTreeLayout
 			  
-			
-				function load() {
-
-					var htmlstring = document.getElementById('myForm:html').value;
-					alert(htmlstring);   
-					getnodes();
-				    var nodes = document.getElementById('myForm:mySavedModel').value;
-				    //var nodes = "{#buttonBean.metadata}"
-				    //var nodes = getnodes();	  
-				    var nodesString = new String(nodes);
-				    alert('nodesString = ' + nodesString);      
-				    var obj = JSON.parse(nodesString);   
-					//nodes = new String(nodeString);	        
-					myDiagram.model = go.Model.fromJson(obj);
-					//myDiagram.model = go.Model.fromJson(nodes);
-				}
  				</script>
+
+
+</h:head>
+
+<h:body onload="init()">
+
+	<p:layout>
+		<p:layoutUnit position="center" resizable="true">
+
+			<h:form id="myForm">
+
+				<p:remoteCommand name="javascriptcall"
+					actionListener="#{buttonBean.javascriptCall()}"
+					update=":myDetails:nameText" />
+
+
+				<h:inputText id="mySavedModel" value="#{buttonBean.metadata}"
+					style="border: solid 1px black; width: 100%; height: 100px" />
+				<button onclick="load();">Load</button>
+
+				<br />
+
+
+				<div id="myDiagram"
+					style="border: solid 1px black; width: 100%; height: 500px"></div>
+
+				<h:inputText id="html" value="#{buttonBean.message}" />
+
+			</h:form>
+
+		</p:layoutUnit>
+		<p:layoutUnit position="east" size="30%">
+
+			<h:form id="myDetails">
+				<p>
+					<p:outputLabel for="nameText" value="Name:" />
+					<p:inputText id="nameText" />
+				</p>
+
+				<p>
+					<p:outputLabel for="descriptionText" value="Description:" />
+					<p:inputText id="descriptionText" />
+				</p>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+	
+	<script>
+	function load() {
+
+		var htmlstring = document.getElementById('myForm:html').value;
+		alert(htmlstring);   
+		getnodes();
+	    var nodes = document.getElementById('myForm:mySavedModel').value;
+	    //var nodes = "{#buttonBean.metadata}"
+	    //var nodes = getnodes();	  
+	    var nodesString = new String(nodes);
+	    alert('nodesString = ' + nodesString);      
+	    var obj = JSON.parse(nodesString);   
+		//nodes = new String(nodeString);	        
+		myDiagram.model = go.Model.fromJson(obj);
+		//myDiagram.model = go.Model.fromJson(nodes);
+	}
+	</script>
 
 </h:body>
 </html>
